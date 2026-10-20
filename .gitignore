@@ -1,0 +1,55 @@
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.pytest_tmp/
+.venv/
+venv/
+.coverage
+coverage.xml
+htmlcov/
+
+# Frontend
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+frontend/vite.config.js
+frontend/vite.config.d.ts
+
+# Runtime state (fixtures are source files, not SQLite databases)
+*.db
+*.db-*
+.voltwise-run/
+artifacts/
+release/
+*.zip
+
+# Browser and judge profiles
+.chrome-cdp/
+.chrome-debug/
+.chrome-debug-2/
+.digital-home-qa/
+.edge-debug/
+.freeze-qa-chrome/
+.judge-chrome/
+.judge-chrome-correction/
+.judge-chrome-polish/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Local screenshots outside the curated artifacts directory
+chrome-page.png
+voltwise-debug.png
+voltwise-working.png
+

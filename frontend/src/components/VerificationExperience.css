@@ -1,0 +1,116 @@
+.verification-experience {
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  border-color: rgba(56, 189, 248, 0.34);
+}
+.verification-experience::before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  border-radius: var(--vw-card-radius) 0 0 var(--vw-card-radius);
+  content: "";
+  background: var(--vw-info);
+}
+.verification-experience.failed::before { background: var(--vw-failure); }
+.verification-experience.verified::before { background: var(--vw-success); }
+.agent-heading { display: flex; justify-content: space-between; gap: 14px; align-items: flex-start; }
+.agent-heading h2 { margin: 2px 0 0; color: var(--vw-text); font-size: clamp(19px, 1.55vw, 24px); line-height: 1.2; }
+.agent-current-stage { margin: 4px 0 0; color: var(--vw-info); font-size: 12px; font-weight: 700; }
+.verification-experience.failed .agent-current-stage { color: var(--vw-failure); }
+.verification-experience.pending .agent-current-stage { color: var(--vw-info); }
+.agent-state { padding: 5px 9px; border: 1px solid rgba(56, 189, 248, .38); border-radius: 999px; color: var(--vw-info); background: rgba(56, 189, 248, .09); font-size: 10.5px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; white-space: nowrap; }
+.agent-stage-list { list-style: none; margin: 17px 0 15px; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; }
+.agent-stage-list li { min-width: 0; padding: 9px; display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 7px; border: 1px solid rgba(125, 165, 205, .16); border-radius: 9px; background: rgba(8, 21, 39, .58); }
+.agent-stage-list li > i { width: 21px; height: 21px; display: grid; place-items: center; border-radius: 50%; color: var(--vw-text-muted); background: rgba(90, 115, 145, .22); font-size: 10px; font-style: normal; font-weight: 850; }
+.agent-stage-list li div { min-width: 0; display: grid; gap: 2px; }
+.agent-stage-list strong { color: var(--vw-text-secondary); font-size: 10.5px; line-height: 1.15; }
+.agent-stage-list span { color: var(--vw-text-muted); font-size: 9.5px; line-height: 1.2; }
+.agent-stage-list li.active { border-color: rgba(56, 189, 248, .66); background: rgba(17, 75, 110, .26); box-shadow: inset 0 0 0 1px rgba(56, 189, 248, .12); }
+.agent-stage-list li.active > i { color: #04131f; background: var(--vw-info); }
+.agent-stage-list li.active strong { color: #dff5ff; }
+.agent-stage-list li.completed > i { color: #c3d0df; background: #31465e; }
+.agent-stage-list li.completed strong { color: var(--vw-text-secondary); }
+.agent-stage-list li.pending { opacity: .62; }
+.agent-waiting { min-height: 116px; padding: 18px; display: flex; align-items: center; gap: 13px; border: 1px solid rgba(56, 189, 248, .2); border-radius: 12px; background: var(--vw-elevated); }
+.agent-waiting > i { width: 12px; height: 12px; flex: 0 0 auto; border-radius: 50%; background: var(--vw-info); box-shadow: 0 0 14px rgba(56, 189, 248, .7); animation: agent-pulse 1s ease-in-out infinite alternate; }
+.agent-waiting div { display: grid; gap: 4px; }
+.agent-waiting strong { color: var(--vw-text); font-size: 14px; }
+.agent-waiting span { color: var(--vw-text-secondary); font-size: 12px; line-height: 1.4; }
+.agent-electrical-evidence { display: grid; gap: 10px; }
+.reported-evidence { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.reported-evidence > span, .agent-diagnosis span { color: var(--vw-text-muted); font-size: 10.5px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
+.reported-evidence > strong { padding: 5px 9px; display: inline-flex; align-items: center; gap: 5px; border: 1px solid rgba(125, 175, 225, .45); border-radius: 8px; color: #dce9f7; background: #25466d; font-size: 14px; }
+.agent-electrical-evidence .checking-line { margin: 0; color: var(--vw-text-secondary); font-size: 11.5px; }
+.reported-evidence i { width: 14px; height: 14px; display: grid; place-items: center; border-radius: 50%; color: #06182c; background: #fff; font-style: normal; }
+.agent-power-values { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.agent-power-values > div { padding: 12px 14px; border: 1px solid rgba(135, 175, 215, .18); border-radius: 10px; background: rgba(10, 24, 45, .64); }
+.agent-power-values span { display: block; margin-bottom: 3px; color: var(--vw-text-muted); font-size: 10.5px; font-weight: 800; text-transform: uppercase; }
+.agent-power-values strong { color: var(--vw-text); font-size: clamp(23px, 2vw, 29px); line-height: 1.1; }
+.agent-power-values .failed-reading strong { color: var(--vw-failure); }
+.agent-power-values .verified-reading strong { color: var(--vw-success); }
+.evidence-finding { margin: 0; padding: 9px 11px; border-left: 3px solid var(--vw-info); border-radius: 5px; color: var(--vw-text-secondary); background: rgba(12, 28, 49, .72); font-size: 12px; font-weight: 700; }
+.evidence-finding.failed { border-left-color: var(--vw-failure); color: #ffd7da; }
+.evidence-finding.verified { border-left-color: var(--vw-success); color: #cdf7df; }
+.agent-diagnosis { display: grid; grid-template-columns: repeat(3, 1fr); overflow: hidden; border: 1px solid rgba(135, 175, 215, .2); border-radius: 11px; background: rgba(10, 24, 45, .55); }
+.agent-diagnosis > div { padding: 11px; display: grid; gap: 4px; }
+.agent-diagnosis > div + div { border-left: 1px solid rgba(135, 175, 215, .18); }
+.agent-diagnosis strong { color: var(--vw-text); font-size: 13px; }
+.agent-diagnosis .failed-text { color: var(--vw-failure); }
+.agent-diagnosis .verified-text { color: var(--vw-success); }
+.agent-diagnosis > p { grid-column: 1 / -1; margin: 0; padding: 10px 11px; display: flex; justify-content: space-between; gap: 12px; border-top: 1px solid rgba(135, 175, 215, .18); }
+.agent-diagnosis > p strong { text-align: right; }
+.agent-conclusion { padding: 13px 14px; display: grid; grid-template-columns: 28px 1fr; align-items: center; gap: 11px; border: 1px solid rgba(242, 85, 95, .44); border-radius: 11px; color: #ffd8dc; background: rgba(170, 39, 48, .24); }
+.agent-conclusion > span { width: 27px; height: 27px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--vw-failure); font-weight: 900; }
+.agent-conclusion strong { color: var(--vw-failure); font-size: 16px; text-transform: uppercase; }
+.agent-conclusion p { margin: 5px 0 0; color: #f2dfe2; font-size: 13px; font-weight: 750; line-height: 1.35; }
+.agent-conclusion p i { margin-inline: 6px; color: var(--vw-text-muted); font-style: normal; }
+.agent-conclusion.verified { border-color: rgba(52, 211, 153, .42); color: #cef6df; background: rgba(22, 112, 70, .24); }
+.agent-conclusion.verified > span { background: var(--vw-success); }
+.agent-conclusion.verified strong { color: var(--vw-success); }
+.assistant-response { margin-top: 10px; padding: 12px 14px; border: 1px solid rgba(56, 189, 248, .2); border-radius: 10px; background: rgba(10, 24, 45, .58); }
+.assistant-response > span, .next-step-label { display: block; margin-bottom: 3px; color: var(--vw-info) !important; font-size: 10px !important; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.assistant-response h3 { margin: 0; color: var(--vw-text); font-size: 13px; }
+.assistant-response p { margin: 5px 0 0; color: var(--vw-text-secondary); font-size: 12px; line-height: 1.45; }
+.assistant-response small { display: block; margin-top: 5px; color: var(--vw-text-muted); font-size: 10.5px; }
+.technician-offer { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(135, 175, 215, .16); }
+.technician-offer-copy { display: grid; gap: 3px; }
+.technician-offer-copy strong { color: var(--vw-text); font-size: 13px; }
+.technician-offer-copy span { color: var(--vw-text-secondary); font-size: 11px; line-height: 1.4; }
+.technician-actions { margin-top: 9px; display: flex; gap: 8px; }
+.technician-actions button, .copy-summary { padding: 8px 11px; border: 1px solid var(--vw-border); border-radius: 8px; color: var(--vw-text-secondary); background: var(--vw-elevated); font: inherit; font-size: 11.5px; font-weight: 750; }
+.technician-actions .technician-primary, .copy-summary { border-color: var(--vw-action); color: #fff; background: var(--vw-action); }
+.technician-dialog-backdrop { position: fixed; z-index: 1000; inset: 0; padding: 20px; display: grid; place-items: center; background: rgba(2, 8, 18, .76); backdrop-filter: blur(4px); }
+.technician-handoff { width: min(520px, 100%); max-height: min(720px, calc(100vh - 40px)); overflow-y: auto; padding: 18px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 16px; border: 1px solid rgba(56, 189, 248, .4); border-radius: 12px; background: var(--vw-panel); box-shadow: 0 24px 70px rgba(0, 0, 0, .55); }
+.technician-handoff header { grid-column: 1 / -1; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding-bottom: 10px; border-bottom: 1px solid rgba(135, 175, 215, .18); }
+.technician-handoff header span { color: var(--vw-info); font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.technician-handoff h3 { margin: 3px 0 0; color: var(--vw-text); font-size: 17px; }
+.handoff-close { width: 34px; height: 34px; flex: 0 0 auto; border: 1px solid var(--vw-border); border-radius: 8px; color: var(--vw-text-secondary); background: var(--vw-elevated); font-size: 20px; }
+.technician-handoff > div { min-width: 0; display: grid; gap: 2px; }
+.technician-handoff span { color: var(--vw-text-muted); font-size: 10px; }
+.technician-handoff strong, .technician-handoff code { overflow-wrap: anywhere; color: var(--vw-text); font-size: 11.5px; }
+.technician-handoff .handoff-run, .technician-handoff p, .technician-handoff footer { grid-column: 1 / -1; }
+.technician-handoff p { margin: 3px 0; color: var(--vw-text-secondary); font-size: 11px; line-height: 1.4; }
+.copy-summary { justify-self: start; }
+.copy-status { min-height: 14px; color: var(--vw-info) !important; }
+.technician-handoff footer { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+.verification-experience.stage-final .agent-heading { order: 0; }
+.verification-experience.stage-final .agent-conclusion { order: 1; margin-top: 14px; }
+.verification-experience.stage-final .assistant-response { order: 2; }
+.verification-experience.stage-final > .primary-action { order: 3; }
+.verification-experience.stage-final .technician-offer { order: 4; }
+.verification-experience.stage-final .agent-stage-list { order: 5; margin-top: 18px; }
+.verification-experience.stage-final .agent-electrical-evidence { order: 6; }
+.verification-experience.stage-final .agent-diagnosis { order: 7; margin-top: 10px; }
+@keyframes agent-pulse { from { opacity: .48; transform: scale(.8); } to { opacity: 1; transform: scale(1); } }
+@media (max-width: 760px) {
+  .verification-experience { padding: 18px; }
+  .agent-stage-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .agent-diagnosis { grid-template-columns: 1fr; }
+  .agent-diagnosis > div + div { border-left: 0; border-top: 1px solid rgba(135, 175, 215, .18); }
+  .agent-power-values, .technician-handoff { grid-template-columns: 1fr; }
+  .technician-handoff header, .technician-handoff .handoff-run, .technician-handoff p, .technician-handoff footer { grid-column: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .agent-waiting > i { animation: none; }
+}

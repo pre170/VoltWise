@@ -1,0 +1,854 @@
+﻿.context-card {
+  max-width: 920px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 26px;
+  border: 1px solid var(--vw-border);
+  border-radius: var(--vw-panel-radius);
+  color: var(--vw-text-secondary);
+  background: var(--vw-panel);
+  box-shadow: 0 16px 38px rgba(0, 5, 15, 0.28);
+  animation: card-in 170ms ease-out both;
+}
+
+.context-card h2 {
+  margin: 0;
+  color: var(--vw-text);
+  font-size: 24px;
+  letter-spacing: -0.02em;
+}
+.context-card .card-kicker {
+  margin: 0 0 8px;
+  color: var(--vw-info);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Energy comparison card */
+.energy-hero {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.energy-hero strong {
+  color: #fff;
+  font-size: 56px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.energy-hero span {
+  color: #8da4be;
+  font-size: 18px;
+  font-weight: 650;
+}
+.change-line {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.change-line b {
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: var(--vw-warning);
+  background: rgba(180, 115, 15, 0.22);
+  font-size: 15px;
+}
+.change-line span {
+  color: var(--vw-text-secondary);
+  font-size: 13px;
+}
+.energy-support {
+  margin-top: 20px;
+  padding-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid rgba(135, 175, 215, 0.16);
+}
+.energy-support > div {
+  display: grid;
+  gap: 4px;
+}
+.energy-support > div + div {
+  padding-left: 24px;
+  border-left: 1px solid rgba(135, 175, 215, 0.16);
+}
+.energy-support span,
+.runtime-comparison span,
+.target-stats span,
+.device-title span,
+.diagnostic-facts span {
+  color: #8da4bd;
+  font-size: 11px;
+}
+.energy-support strong {
+  color: #f1f6fc;
+  font-size: 20px;
+}
+
+/* Usage explanation card */
+.usage-card h2 {
+  margin-bottom: 16px;
+  font-size: 26px;
+}
+.runtime-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.9fr;
+  border: 1px solid rgba(135, 175, 215, 0.2);
+  border-radius: 13px;
+  overflow: hidden;
+  background: rgba(10, 24, 45, 0.6);
+}
+.runtime-comparison > div {
+  padding: 12px 14px;
+  display: grid;
+  gap: 3px;
+}
+.runtime-comparison > div + div {
+  border-left: 1px solid rgba(135, 175, 215, 0.2);
+}
+.runtime-comparison strong {
+  font-size: 22px;
+  color: #fff;
+}
+.runtime-comparison .runtime-change {
+  color: #9eccf8;
+  background: rgba(20, 50, 85, 0.6);
+}
+.contribution {
+  margin-top: 14px;
+  padding: 13px 15px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 14px;
+  border-radius: 12px;
+  color: #ecf5ff;
+  background: #102a4a;
+  border: 1px solid rgba(70, 130, 195, 0.25);
+}
+.contribution span {
+  align-self: end;
+  color: #9cb4cd;
+  font-size: 11px;
+}
+.contribution strong {
+  grid-row: 1 / 3;
+  grid-column: 2;
+  align-self: center;
+  font-size: 22px;
+  color: var(--vw-warning);
+}
+.contribution small {
+  color: #9cb1c7;
+  font-size: 10.5px;
+}
+.contribution small b {
+  color: var(--vw-warning);
+  letter-spacing: 0.05em;
+}
+.unattributed {
+  margin-top: 14px;
+  padding: 12px 4px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: #8da4be;
+  border-top: 1px solid rgba(135, 175, 215, 0.12);
+}
+.unattributed > div {
+  min-width: 130px;
+  display: grid;
+  gap: 2px;
+}
+.unattributed strong {
+  color: #e4edf6;
+  font-size: 16px;
+}
+.unattributed p {
+  max-width: 400px;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+/* Tariff outlook card */
+.tariff-scale {
+  margin-top: 20px;
+  padding: 0 4px;
+}
+.scale-labels {
+  display: flex;
+  justify-content: space-between;
+  color: #8da4be;
+  font-size: 11px;
+}
+.scale-line {
+  position: relative;
+  height: 8px;
+  margin: 8px 0 28px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, var(--vw-info) 0 30.3%, var(--vw-warning) 30.3% 60.6%, var(--vw-safety) 60.6% 90.9%, var(--vw-failure) 90.9%);
+}
+.scale-line i {
+  position: absolute;
+  top: -6px;
+  width: 4px;
+  height: 20px;
+  border-radius: 2px;
+  transform: translateX(-2px);
+}
+.scale-line i::after {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  content: "";
+  transform: translateX(-50%);
+}
+.current-pin {
+  left: var(--current);
+  background: var(--vw-info);
+}
+.current-pin::after {
+  background: var(--vw-info);
+}
+.projected-pin {
+  left: var(--projected);
+  background: var(--vw-warning);
+}
+.projected-pin::after {
+  background: var(--vw-warning);
+}
+.scale-readings {
+  display: flex;
+  justify-content: space-between;
+}
+.scale-readings > div {
+  display: grid;
+  gap: 2px;
+}
+.scale-readings > div:last-child {
+  text-align: right;
+}
+.scale-readings span {
+  color: #8da4be;
+  font-size: 11px;
+}
+.scale-readings strong {
+  color: #fff;
+  font-size: 18px;
+}
+.tariff-conclusion {
+  margin-top: 18px;
+  padding: 13px 15px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-radius: 12px;
+  background: rgba(180, 115, 15, 0.18);
+  border: 1px solid rgba(245, 158, 11, 0.38);
+}
+.tariff-conclusion strong {
+  min-width: 150px;
+  color: var(--vw-warning);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.tariff-conclusion p {
+  margin: 0;
+  color: #eadcc0;
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+.tariff-note {
+  margin: 12px 2px 0;
+  color: #8da4be;
+  font-size: 11.5px;
+}
+
+/* Target plan card */
+.target-stats {
+  margin: 18px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid rgba(135, 175, 215, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(10, 24, 45, 0.6);
+}
+.target-stats > div {
+  padding: 12px;
+  display: grid;
+  gap: 3px;
+}
+.target-stats > div + div {
+  border-left: 1px solid rgba(135, 175, 215, 0.2);
+}
+.target-stats strong {
+  color: #fff;
+  font-size: 18px;
+}
+.recommendations {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.recommendations li {
+  padding: 10px 0;
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  border-top: 1px solid rgba(135, 175, 215, 0.14);
+}
+.recommendations li > span {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: #25466d;
+  font-weight: 750;
+  font-size: 11px;
+}
+.recommendations p {
+  margin: 2px 0 0;
+  color: #8da4be;
+  font-size: 11.5px;
+}
+
+/* Device verification hero card */
+.verification-card {
+  position: relative;
+  padding: 24px 26px;
+  border-color: rgba(48, 86, 128, 0.45);
+}
+.verification-card::before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  border-radius: 18px 0 0 18px;
+  content: "";
+  background: var(--vw-failure);
+}
+.verification-card.verified::before {
+  background: var(--vw-success);
+}
+.verification-card.high-draw::before {
+  background: var(--vw-safety);
+}
+
+.device-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.device-title h2 {
+  margin: 0 0 2px;
+  font-size: 24px;
+  color: #fff;
+}
+.device-title > strong {
+  padding: 5px 10px;
+  border-radius: 8px;
+  color: #fff;
+  background: #25466d;
+  font-size: 14px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: none;
+}
+.device-title > strong.verified-state {
+  background: var(--vw-success);
+  box-shadow: 0 0 10px rgba(32, 168, 97, 0.4);
+}
+.device-title > strong.cutoff-state {
+  background: #b84f29;
+  box-shadow: none;
+}
+.device-title > strong.reported-only {
+  border: 1px solid rgba(125, 175, 225, 0.45);
+  color: #dce9f7;
+}
+.device-title > strong i {
+  display: inline-grid;
+  width: 16px;
+  height: 16px;
+  place-items: center;
+  border-radius: 50%;
+  color: #06182c;
+  background: #fff;
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 900;
+}
+.checking-line {
+  margin: 14px 0 14px;
+  color: #8da4be;
+  font-size: 13px;
+}
+
+/* Power comparison bars */
+.power-comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.power-comparison > div {
+  padding: 14px 16px;
+  border: 1px solid rgba(135, 175, 215, 0.18);
+  border-radius: 11px;
+  background: rgba(10, 24, 45, 0.55);
+}
+.power-comparison span {
+  display: block;
+  margin-bottom: 4px;
+  color: #8da4be;
+  font-size: 10.5px;
+  font-weight: 750;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.power-comparison strong {
+  display: block;
+  font-size: 28px;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: #fff;
+}
+.power-comparison i {
+  height: 6px;
+  margin-top: 10px;
+  display: block;
+  overflow: hidden;
+  border-radius: 4px;
+  background: rgba(25, 45, 72, 0.8);
+}
+.power-comparison i b {
+  height: 100%;
+  min-width: 3px;
+  display: block;
+  border-radius: inherit;
+  background: var(--vw-info);
+}
+.power-comparison.danger > div:last-child strong {
+  color: var(--vw-failure);
+}
+.power-comparison.danger > div:last-child i b {
+  background: var(--vw-failure);
+}
+.power-comparison.success > div:last-child strong {
+  color: var(--vw-success);
+}
+.power-comparison.success > div:last-child i b {
+  background: var(--vw-success);
+}
+
+/* Verification outcome banner */
+.verification-outcome {
+  margin-top: 16px;
+  padding: 13px 15px;
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 12px;
+  align-items: center;
+  border-radius: 11px;
+  color: #ffd8d3;
+  background: rgba(195, 45, 40, 0.32);
+  border: 1px solid rgba(239, 102, 94, 0.4);
+}
+.verified .verification-outcome {
+  color: #c9f8dd;
+  background: rgba(25, 125, 75, 0.3);
+  border-color: rgba(52, 211, 153, 0.4);
+}
+.verification-outcome > span {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--vw-failure);
+  font-weight: 900;
+  font-size: 13px;
+}
+.verified .verification-outcome > span {
+  background: var(--vw-success);
+}
+.verification-outcome strong {
+  font-size: 16px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.verification-outcome p {
+  margin: 3px 0 0;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: #f1dde0;
+}
+.high-draw .verification-outcome {
+  color: #ffe1d4;
+  background: rgba(150, 61, 28, 0.28);
+  border-color: rgba(255, 138, 91, 0.5);
+}
+.high-draw .verification-outcome > span { background: var(--vw-safety); color: #281008; }
+.high-draw .verification-outcome p { color: #f4d7cb; }
+.verified .verification-outcome p {
+  color: #c7eed9;
+}
+
+/* Primary CTA button */
+.primary-action {
+  margin-top: 16px;
+  width: 100%;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 11px;
+  color: #fff;
+  background: var(--vw-action);
+  font-size: 14px;
+  font-weight: 750;
+  box-shadow: 0 4px 16px rgba(24, 124, 232, 0.35);
+  transition: all 160ms ease;
+}
+.primary-action:hover {
+  background: #2187f5;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 22px rgba(24, 124, 232, 0.5);
+}
+.primary-action span {
+  font-size: 15px;
+}
+
+/* Verification progress bar at bottom of card */
+.verification-progress {
+  clear: both;
+  margin-top: 18px;
+  padding-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  border-top: 1px solid rgba(135, 175, 215, 0.14);
+  color: #667c94;
+  font-size: 10.5px;
+  font-weight: 750;
+}
+.verification-progress i {
+  color: #405875;
+  font-style: normal;
+}
+.verification-progress span.done {
+  color: #5ecff5;
+}
+.verification-progress span.current {
+  color: #ff9d3b;
+}
+.verification-progress span.verified {
+  color: var(--vw-success);
+}
+.verification-progress span.failed {
+  color: var(--vw-failure);
+}
+.verification-progress span.skipped {
+  color: #71859c;
+  opacity: 0.7;
+}
+
+.safety-transition {
+  margin-top: 14px;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  border: 1px solid rgba(255, 138, 91, 0.5);
+  border-radius: 12px;
+  background: rgba(124, 45, 18, 0.2);
+}
+.safety-transition > div {
+  min-width: 0;
+  display: grid;
+  gap: 3px;
+}
+.safety-transition span {
+  color: var(--vw-safety);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.safety-transition strong {
+  color: #fff3e8;
+  font-size: 11.5px;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+.safety-transition > i {
+  color: var(--vw-safety);
+  font-style: normal;
+}
+.safety-transition .safety-outcome {
+  grid-column: 1 / -1;
+  padding-top: 9px;
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  border-top: 1px solid rgba(249, 115, 22, 0.25);
+}
+.safety-transition .safety-outcome strong {
+  color: var(--vw-safety);
+  font-size: 13px;
+}
+
+/* Diagnostic card */
+.diagnostic-card {
+  padding: 24px 26px;
+}
+.diagnostic-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.diagnostic-heading h2 {
+  font-size: 26px;
+}
+.result-symbol {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--vw-failure);
+  font-size: 20px;
+  font-weight: 800;
+}
+.diagnostic-card.recovered .result-symbol {
+  background: var(--vw-success);
+}
+.diagnostic-card.safety .result-symbol {
+  color: #281008;
+  background: var(--vw-safety);
+}
+
+.diagnostic-flow {
+  list-style: none;
+  margin: 18px 0 16px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 1px solid rgba(135, 175, 215, 0.22);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(10, 24, 45, 0.5);
+}
+.diagnostic-flow li {
+  position: relative;
+  min-width: 0;
+  min-height: 74px;
+  padding: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.diagnostic-flow li:not(:nth-child(3n + 1)) {
+  border-left: 1px solid rgba(135, 175, 215, 0.22);
+}
+.diagnostic-flow li:nth-child(n + 4) {
+  border-top: 1px solid rgba(135, 175, 215, 0.22);
+}
+.diagnostic-flow li:nth-child(3n) .flow-arrow {
+  display: none;
+}
+.stage-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+.stage-top > span {
+  color: #8da4bd;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.stage-top i {
+  width: 17px;
+  height: 17px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: #31506f;
+  font-style: normal;
+  font-size: 10px;
+}
+.diagnostic-flow li.done .stage-top i {
+  background: #1685b7;
+}
+.diagnostic-flow li.verified .stage-top i {
+  background: var(--vw-success);
+}
+.diagnostic-flow li.failed .stage-top i,
+.diagnostic-flow li.danger .stage-top i {
+  background: var(--vw-failure);
+}
+.diagnostic-flow li.attention .stage-top i {
+  color: #271a00;
+  background: var(--vw-warning);
+}
+.diagnostic-flow li.safety .stage-top i {
+  color: #281008;
+  background: var(--vw-safety);
+}
+.diagnostic-flow li.skipped .stage-top i {
+  color: #8da4be;
+  background: rgba(45, 65, 90, 0.5);
+}
+.diagnostic-flow strong {
+  overflow-wrap: anywhere;
+  color: #f1f6fc;
+  font-size: 12px;
+  line-height: 1.25;
+}
+.flow-arrow {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  right: -8px;
+  width: 15px;
+  height: 15px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #7d96af;
+  background: var(--vw-panel);
+  font-size: 10px;
+  transform: translateY(-50%);
+  border: 1px solid rgba(135, 175, 215, 0.2);
+}
+
+.diagnostic-facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(135, 175, 215, 0.16);
+  border-bottom: 1px solid rgba(135, 175, 215, 0.16);
+  background: rgba(10, 24, 45, 0.4);
+}
+.diagnostic-facts > div {
+  padding: 10px 11px;
+  display: grid;
+  gap: 3px;
+}
+.diagnostic-facts > div + div {
+  border-left: 1px solid rgba(135, 175, 215, 0.16);
+}
+.diagnostic-facts strong {
+  color: #fff;
+  font-size: 15px;
+}
+.diagnostic-message {
+  margin: 14px 0 0;
+  padding-left: 12px;
+  border-left: 3px solid var(--vw-failure);
+  color: #c7d6e8;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.recovered .diagnostic-message {
+  border-left-color: var(--vw-success);
+}
+.safety .diagnostic-message {
+  border-left-color: var(--vw-safety);
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 760px) {
+  .context-card {
+    padding: 20px 18px;
+  }
+  .energy-hero strong {
+    font-size: 48px;
+  }
+  .runtime-comparison {
+    grid-template-columns: 1fr;
+  }
+  .runtime-comparison > div + div {
+    border-left: 0;
+    border-top: 1px solid rgba(135, 175, 215, 0.2);
+  }
+  .tariff-conclusion {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .diagnostic-flow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .diagnostic-flow li {
+    border-left: 0;
+  }
+  .diagnostic-flow li:nth-child(even) {
+    border-left: 1px solid rgba(135, 175, 215, 0.22);
+  }
+  .diagnostic-flow li:nth-child(n+3) {
+    border-top: 1px solid rgba(135, 175, 215, 0.22);
+  }
+  .flow-arrow {
+    display: none;
+  }
+  .diagnostic-facts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .diagnostic-facts > div:nth-child(3) {
+    border-left: 0;
+    border-top: 1px solid rgba(135, 175, 215, 0.16);
+  }
+  .diagnostic-facts > div:nth-child(4) {
+    border-top: 1px solid rgba(135, 175, 215, 0.16);
+  }
+  .safety-transition {
+    grid-template-columns: 1fr;
+  }
+  .safety-transition strong {
+    white-space: normal;
+  }
+  .safety-transition > i {
+    transform: rotate(90deg);
+    justify-self: start;
+  }
+  .safety-transition .safety-outcome {
+    grid-column: 1;
+  }
+}
+

@@ -1,0 +1,880 @@
+﻿.digital-home {
+  min-width: 0;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  border: 1px solid var(--vw-border);
+  border-radius: var(--vw-panel-radius);
+  overflow: hidden;
+  color: var(--vw-text);
+  background: var(--vw-panel);
+  box-shadow: 0 16px 38px rgba(0, 5, 15, 0.3);
+  animation: card-in 170ms ease-out both;
+}
+
+.home-header {
+  min-height: 58px;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid rgba(143, 190, 235, 0.12);
+  background: var(--vw-panel);
+}
+.home-header p {
+  margin: 0 0 2px;
+  color: var(--vw-info);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.home-header h2 {
+  margin: 0;
+  color: var(--vw-text);
+  font-size: 17px;
+  letter-spacing: -0.015em;
+}
+.home-energy {
+  min-width: 220px;
+  display: grid;
+  text-align: right;
+}
+.home-energy span, .home-energy small {
+  color: var(--vw-text-muted);
+  font-size: 11px;
+}
+.home-energy strong {
+  margin: 1px 0;
+  color: #fff;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+}
+.home-energy.quiet strong {
+  font-size: 18px;
+  color: #dbe7f5;
+}
+
+.home-stage {
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-inline: clamp(12px, 1.5vw, 24px);
+  box-sizing: border-box;
+  overflow: hidden;
+  isolation: isolate;
+  background: radial-gradient(circle at 45% 38%, #143254 0%, #09203a 45%, #051122 100%);
+}
+.home-stage::after {
+  position: absolute;
+  z-index: 1;
+  inset: auto 0 0;
+  height: 20%;
+  content: "";
+  background: linear-gradient(transparent, rgba(3, 9, 18, 0.65));
+  pointer-events: none;
+}
+.home-scene-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: calc(530px * (1000 / 560));
+  height: 530px;
+  max-height: 100%;
+}
+.home-interior {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.45));
+}
+
+/* Room identification pills */
+.room-label {
+  position: absolute;
+  z-index: 3;
+  padding: 5px 11px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--vw-border);
+  border-radius: 9px;
+  color: var(--vw-text);
+  background: rgba(14, 27, 49, 0.92);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.32);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(6px);
+}
+.living-label {
+  top: 4%;
+  left: 3.5%;
+}
+.kitchen-label {
+  top: 4%;
+  left: 65%;
+}
+
+/* Anchored appliance status badges */
+.scene-device {
+  position: absolute;
+  z-index: 4;
+  padding: 5px 9px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--vw-border);
+  border-radius: 8px;
+  color: var(--vw-text-secondary);
+  background: rgba(14, 27, 49, 0.94);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(6px);
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: left;
+}
+.scene-device svg {
+  width: 23px;
+  height: 23px;
+  flex: 0 0 auto;
+  fill: #152d47;
+  stroke: #c5d5e5;
+  stroke-width: 2.2;
+}
+.scene-device > div {
+  display: grid;
+  line-height: 1.25;
+}
+.scene-device strong {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--vw-text);
+  white-space: nowrap;
+}
+.scene-device span {
+  color: var(--vw-text-muted);
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.scene-device small {
+  margin-top: 2px;
+  color: var(--vw-warning);
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Exact spatial device anchorings inside physical rooms */
+.light-scene {
+  top: 12%;
+  left: 8%;
+}
+.fan-scene {
+  top: 12%;
+  left: 34%;
+}
+.ac-scene {
+  top: 23%;
+  left: 23%;
+}
+.tv-scene {
+  top: 36%;
+  left: 13%;
+}
+.fridge-scene {
+  top: 25%;
+  left: 65%;
+}
+.dishwasher-scene {
+  top: 53%;
+  left: 81%;
+}
+.heater-scene {
+  top: 70%;
+  left: 20%;
+}
+
+button.scene-device {
+  cursor: pointer;
+  user-select: none;
+}
+button.scene-device:hover {
+  border-color: var(--vw-info);
+  background: var(--vw-elevated);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+.scene-device.on {
+  border-color: var(--vw-info);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+}
+.scene-device.on span {
+  color: var(--vw-info);
+}
+.scene-device.active-device {
+  border-color: var(--vw-info);
+  box-shadow: 0 0 0 2px rgba(56, 201, 248, 0.35);
+}
+.digital-home.investigating-heater .scene-device:not(.heater-scene) { opacity: .62; }
+.digital-home.investigating-heater .scene-device:not(.heater-scene):focus-visible,
+.digital-home.investigating-heater .scene-device:not(.heater-scene):hover { opacity: 1; }
+.digital-home.investigating-heater .ac-scene { left: 15%; }
+
+.confirmed-pill {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 750;
+  color: var(--vw-info);
+  background: rgba(56, 189, 248, 0.16);
+  padding: 1px 5px;
+  border-radius: 4px;
+  margin-top: 2px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Ceiling fan rotation animation */
+.ceiling-fan-blades.spinning {
+  animation: fan-spin 0.5s linear infinite;
+}
+@keyframes fan-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Airflow drift animation */
+.ac-airflow-lines path {
+  animation: ac-flow 1.6s ease-in-out infinite alternate;
+}
+@keyframes ac-flow {
+  0% { opacity: 0.3; transform: translateY(0); }
+  100% { opacity: 0.85; transform: translateY(5px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ceiling-fan-blades.spinning {
+    animation: none;
+  }
+  .ac-airflow-lines path {
+    animation: none;
+  }
+}
+
+/* AC Highlighting during energy explanation */
+.scene-device.highlighted {
+  border-color: #f1bd55;
+  background: rgba(45, 34, 18, 0.94);
+  box-shadow: 0 0 0 3px rgba(241, 189, 85, 0.25), 0 10px 24px rgba(0, 0, 0, 0.4);
+  transform: scale(1.05);
+}
+.scene-device.highlighted svg {
+  stroke: var(--vw-warning);
+}
+.home-stage:has(.scene-device.highlighted) .scene-device:not(.highlighted) {
+  opacity: 0.55;
+}
+.highlighted-ac {
+  filter: drop-shadow(0 0 12px rgba(241, 189, 85, 0.65));
+}
+
+/* Physical space heater */
+.physical-heater {
+  position: absolute;
+  z-index: 5;
+  right: 43%;
+  bottom: 14%;
+  width: 108px;
+  height: 122px;
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.5));
+  transition: all 200ms ease;
+}
+.radiator {
+  position: absolute;
+  inset: 26px 0 0;
+  padding: 9px 10px;
+  display: flex;
+  gap: 5px;
+  border: 4px solid #c9bbb0;
+  border-radius: 14px 14px 10px 10px;
+  background: linear-gradient(90deg, #f2e7dc, #baa89b);
+  box-shadow: inset 0 0 0 2px rgba(76, 61, 53, 0.22);
+}
+.radiator > i {
+  flex: 1;
+  border-radius: 7px;
+  background: linear-gradient(90deg, #a19287, #ebdfd3, #948479);
+  box-shadow: inset 0 0 0 1px rgba(73, 56, 46, 0.25);
+}
+.radiator > span {
+  position: absolute;
+  right: -7px;
+  top: 10px;
+  width: 11px;
+  height: 22px;
+  border: 3px solid #a69080;
+  border-radius: 4px;
+  background: #decbbe;
+}
+.radiator::after {
+  position: absolute;
+  right: 8px;
+  bottom: -10px;
+  left: 8px;
+  height: 9px;
+  border-radius: 0 0 6px 6px;
+  content: "";
+  background: #6c584c;
+}
+.heater-led {
+  position: absolute;
+  z-index: 2;
+  top: 35px;
+  right: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #465565;
+  box-shadow: 0 0 0 2px rgba(12, 20, 30, 0.6);
+  transition: all 180ms ease;
+}
+
+/* Heater state variations */
+.physical-heater.verified .heater-led {
+  background: var(--vw-success);
+  box-shadow: 0 0 10px rgba(32, 168, 97, 0.9);
+}
+.physical-heater.reported .heater-led,
+.physical-heater.verifying .heater-led,
+.physical-heater.no-draw .heater-led,
+.physical-heater.recovering .heater-led {
+  background: #7f91a5;
+  box-shadow: 0 0 6px rgba(127, 145, 165, 0.45);
+}
+.physical-heater.verifying,
+.physical-heater.recovering { filter: drop-shadow(0 0 12px rgba(56, 189, 248, .68)); }
+.physical-heater.no-draw {
+  filter: drop-shadow(0 0 12px rgba(239, 102, 94, 0.55));
+}
+.physical-heater.high-draw {
+  filter: drop-shadow(0 0 18px rgba(255, 79, 72, 0.85));
+}
+.physical-heater.high-draw .heater-led {
+  background: var(--vw-failure);
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.95);
+}
+.physical-heater.safety {
+  opacity: 0.6;
+  filter: grayscale(0.7) drop-shadow(0 0 8px rgba(239, 68, 68, 0.4));
+}
+.physical-heater.safety .heater-led {
+  background: #2b394a;
+  box-shadow: none;
+}
+.physical-heater.verified {
+  filter: drop-shadow(0 0 18px rgba(32, 168, 97, 0.72));
+}
+
+/* Heat waves rising when verified */
+.heat-waves {
+  position: absolute;
+  top: 0;
+  right: 12px;
+  left: 12px;
+  display: flex;
+  justify-content: space-around;
+  pointer-events: none;
+}
+.heat-waves i {
+  width: 15px;
+  height: 27px;
+  border-left: 3px solid #ff9d3b;
+  border-radius: 50%;
+  opacity: 0;
+}
+.physical-heater.verified .heat-waves i {
+  opacity: 0.88;
+  animation: heat-rise 1.3s ease-in-out infinite;
+}
+.physical-heater.verified .heat-waves i:nth-child(2) {
+  animation-delay: 130ms;
+}
+.physical-heater.verified .heat-waves i:nth-child(3) {
+  animation-delay: 260ms;
+}
+
+/* Compact contextual overlay anchored directly above the heater */
+.heater-readout {
+  position: absolute;
+  z-index: 7;
+  right: 34%;
+  bottom: 40%;
+  width: min(270px, 29%);
+  padding: 11px 13px;
+  border: 1px solid rgba(64, 110, 160, 0.35);
+  border-radius: 13px;
+  color: #edf5fc;
+  background: rgba(6, 19, 36, 0.92);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(8px);
+  animation: card-in 160ms ease-out both;
+}
+.heater-readout header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.heater-readout header svg {
+  width: 30px;
+  height: 30px;
+  fill: #152d47;
+  stroke: #ff9d3b;
+  stroke-width: 2.3;
+}
+.heater-readout header > div {
+  display: grid;
+  gap: 1px;
+}
+.heater-readout header strong {
+  font-size: 12px;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+.reported-line {
+  color: #dce9f7;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.reported-line b {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 850;
+}
+.reported-line small {
+  color: #9cb1c7;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.heater-readout dl {
+  margin: 9px 0 0;
+  padding-top: 8px;
+  display: flex;
+  gap: 14px;
+  border-top: 1px solid rgba(135, 175, 215, 0.16);
+}
+.heater-readout dl div {
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+}
+.heater-readout dt {
+  color: #9bacbf;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.heater-readout dd {
+  margin: 0;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.heater-readout p {
+  margin: 8px 0 0;
+  padding: 6px 9px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 8px;
+  color: #cbd8e7;
+  background: rgba(83, 100, 122, 0.22);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.01em;
+}
+.heater-readout p b {
+  width: 17px;
+  height: 17px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  color: #fff;
+  background: #5d6d84;
+  font-size: 10px;
+}
+.heater-readout p > span {
+  display: grid;
+  gap: 1px;
+}
+.heater-readout p small {
+  color: #a9b9cb;
+  font-size: 10.5px;
+  font-weight: 750;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.heater-readout p strong {
+  color: inherit;
+  font-size: 11px;
+}
+
+/* Distinct visual semantics for NO_DRAW vs HIGH_DRAW vs VERIFIED */
+.heater-readout.no-draw {
+  border-color: var(--vw-failure);
+}
+.heater-readout.no-draw dd:nth-last-child(1) {
+  color: var(--vw-failure);
+}
+.heater-readout.no-draw p {
+  color: #ffe0dd;
+  background: rgba(185, 48, 48, 0.42);
+}
+.heater-readout.no-draw p b {
+  background: var(--vw-failure);
+}
+
+.heater-readout.high-draw {
+  border-color: var(--vw-failure);
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.25), 0 14px 34px rgba(0, 0, 0, 0.45);
+}
+.heater-readout.high-draw dd:nth-last-child(1) {
+  color: var(--vw-failure);
+}
+.heater-readout.high-draw p {
+  color: #ffe2df;
+  background: rgba(195, 35, 35, 0.52);
+}
+.heater-readout.high-draw p b {
+  background: var(--vw-failure);
+}
+
+.heater-readout.safety {
+  border-color: var(--vw-safety);
+}
+.heater-readout.safety dd:nth-last-child(1) {
+  color: var(--vw-safety);
+}
+.heater-readout.safety p {
+  color: #ffedd5;
+  background: rgba(194, 65, 12, 0.45);
+}
+.heater-readout.safety p b {
+  background: var(--vw-safety);
+}
+
+.heater-readout.verified {
+  border-color: var(--vw-success);
+}
+.heater-readout.verified dd:nth-last-child(1) {
+  color: var(--vw-success);
+}
+.heater-readout.verified p {
+  color: #d1fae5;
+  background: rgba(22, 101, 52, 0.42);
+}
+.heater-readout.verified p b {
+  background: #10b981;
+}
+
+/* VoltWise electrical observation path visual */
+.observation-path {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.observation-path path {
+  fill: none;
+  stroke: var(--vw-info);
+  stroke-width: 4.5;
+  stroke-linecap: round;
+  stroke-dasharray: 6 12;
+  filter: drop-shadow(0 0 6px var(--vw-info));
+  animation: current-flow 1.1s linear infinite;
+}
+.observation-path circle {
+  fill: var(--vw-info);
+  filter: drop-shadow(0 0 8px var(--vw-info));
+}
+.monitor-label {
+  position: absolute;
+  z-index: 7;
+  left: 24%;
+  bottom: 10%;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 11px;
+  border: 1px solid rgba(56, 201, 248, 0.4);
+  border-radius: 9px;
+  color: #b9d8f5;
+  background: rgba(5, 18, 36, 0.92);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  font-size: 11px;
+}
+.monitor-label i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--vw-info);
+  box-shadow: 0 0 10px var(--vw-info);
+}
+.monitor-label span {
+  display: grid;
+  line-height: 1.25;
+}
+.monitor-label strong {
+  color: #fff;
+  font-size: 11.5px;
+}
+
+/* VoltWise 4-Step Verification Progression in Scene */
+.home-loop {
+  position: absolute;
+  z-index: 8;
+  right: 28%;
+  bottom: 2%;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid rgba(80, 140, 200, 0.28);
+  border-radius: 11px;
+  color: #9cb1c7;
+  background: rgba(4, 15, 30, 0.88);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.32);
+}
+.loop-step {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #8da4bd;
+  opacity: 0.48;
+  transition: all 160ms ease;
+}
+.loop-step .step-num {
+  width: 15px;
+  height: 15px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(60, 85, 115, 0.4);
+  color: #b5c7da;
+  font-size: 10px;
+}
+.loop-step .step-val {
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(56, 201, 248, 0.15);
+  color: var(--vw-info);
+  font-size: 10px;
+  font-weight: 800;
+}
+.loop-step.done,
+.loop-step.current,
+.loop-step.danger,
+.loop-step.safety,
+.loop-step.failed,
+.loop-step.skipped,
+.loop-step.verified {
+  opacity: 1;
+}
+.loop-step.done,
+.loop-step.current {
+  color: #fff;
+}
+.loop-step.done .step-num {
+  background: #1685b7;
+  color: #fff;
+}
+.loop-step.current .step-num {
+  background: var(--vw-info);
+  color: #051426;
+  font-weight: 900;
+  box-shadow: 0 0 8px rgba(56, 201, 248, 0.7);
+}
+.loop-step.verified {
+  color: var(--vw-success);
+}
+.loop-step.verified .step-num {
+  color: #fff;
+  background: var(--vw-success);
+}
+.loop-step.failed,
+.loop-step.danger { color: #ffc2c6; }
+.loop-step.failed .step-num,
+.loop-step.danger .step-num { color: #fff; background: var(--vw-failure); }
+.loop-step.safety { color: #ffd1bf; }
+.loop-step.safety .step-num { color: #20100a; background: var(--vw-safety); }
+.loop-step.skipped { color: #7890a8; }
+.loop-step.verified .step-val {
+  color: var(--vw-success);
+  background: rgba(32, 168, 97, 0.2);
+}
+.loop-step.failed .step-val {
+  color: #ffd6d2;
+  background: rgba(200, 61, 61, 0.22);
+}
+.loop-step.danger .step-val {
+  color: #ffd9dc;
+  background: rgba(242, 85, 95, 0.2);
+}
+.loop-step.safety .step-val {
+  color: #ffe1d4;
+  background: rgba(255, 138, 91, 0.2);
+}
+.loop-step.skipped .step-val {
+  color: #94a3b8;
+  background: rgba(71, 85, 105, 0.2);
+}
+.loop-arrow {
+  color: #435b75;
+  font-style: normal;
+  font-size: 10px;
+}
+
+@keyframes heat-rise {
+  0%, 100% {
+    transform: translateY(4px);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translateY(-5px);
+    opacity: 0.95;
+  }
+}
+@keyframes current-flow {
+  to {
+    stroke-dashoffset: -36;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .physical-heater.verified .heat-waves i,
+  .observation-path path {
+    animation: none;
+  }
+}
+
+/* Responsive viewports */
+@media (max-width: 1440px) {
+  .home-stage {
+    min-height: 440px;
+  }
+  .heater-readout {
+    width: 32%;
+    right: 36%;
+  }
+  .home-scene-wrapper {
+    max-width: calc(520px * (1000 / 560));
+    height: 520px;
+  }
+}
+
+@media (max-height: 820px) and (min-width: 901px) {
+  .home-stage,
+  .conversation-panel.landing .home-stage { min-height: 360px; }
+  .home-scene-wrapper {
+    height: 410px;
+    transform: scale(0.92);
+    transform-origin: left center;
+  }
+  .home-header { min-height: 54px; padding-block: 8px; }
+}
+
+@media (max-width: 1100px) {
+  .home-stage {
+    min-height: 460px;
+  }
+  .heater-readout {
+    right: 33%;
+    width: 35%;
+  }
+  .physical-heater {
+    right: 39%;
+  }
+  .scene-device strong {
+    font-size: 10.5px;
+  }
+}
+
+@media (max-width: 760px) {
+  .home-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .home-energy {
+    text-align: left;
+  }
+  .home-stage {
+    min-height: 420px;
+    justify-content: center;
+    padding-inline: 0;
+  }
+  .home-scene-wrapper {
+    height: 410px;
+  }
+  .heater-readout {
+    top: 15%;
+    bottom: auto;
+    right: 4%;
+    width: 44%;
+  }
+  .physical-heater {
+    right: 25%;
+    bottom: 14%;
+    transform: scale(0.85);
+    transform-origin: bottom;
+  }
+  .fridge-scene, .dishwasher-scene {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-stage {
+    min-height: 450px;
+  }
+  .home-interior {
+    width: 150%;
+    max-width: none;
+    transform: translateX(-17%);
+  }
+  .kitchen-label, .fridge-scene, .dishwasher-scene, .tv-scene {
+    display: none;
+  }
+  .ac-scene {
+    left: 7%;
+  }
+  .physical-heater {
+    right: 8%;
+    bottom: 14%;
+  }
+  .heater-readout {
+    right: 4%;
+    top: 18%;
+    width: 58%;
+  }
+  .monitor-label {
+    left: 5%;
+    bottom: 6%;
+  }
+}
+
